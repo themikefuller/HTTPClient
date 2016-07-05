@@ -9,22 +9,7 @@ class HTTPClient {
     }
 
     public function RunCommand($resource='/',$method='GET',$body='',$headers=[]) {
-        global $argv;
-        if (isset($argv[1])) {
-            $resource = $argv[1];
-            if (isset($argv[2])) {
-                $method = strtoupper($argv[2]);
-                if (isset($argv[3])) {
-                    $body = $argv[3];
-                    if (isset($argv[4])) {
-                        $headers = $argv[4];
-                        parse_str($headers,$headers);
-                    }
-                }
-            }
-        }
         $url = $this->host . $resource;
- 
         $curl_response = $this->curl_command($url,$method,$body,$headers);
         return $curl_response;
     }
